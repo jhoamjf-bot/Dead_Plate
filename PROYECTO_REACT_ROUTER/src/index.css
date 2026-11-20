@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Creepster&display=swap');
+
+
+:root {
+  --rojo-sangre:    #8b0000;
+  --rojo-vivo:      #cc0000;
+  --rojo-oscuro:    #4a0000;
+  --negro:          #0a0505;
+  --negro-medio:    #120808;
+  --negro-suave:    #1a0d0d;
+  --crema:          #e8d5b0;
+  --crema-oscuro:   #c4a882;
+  --dorado:         #c8952a;
+  --gris-pixel:     #3d2020;
+  --blanco-roto:    #f0e6d3;
+  --verde-enfermo:  #2d4a1e;
+
+  --fuente-pixel:   'Press Start 2P', monospace;
+  --fuente-retro:   'VT323', monospace;
+  --fuente-terror:  'Creepster', cursive;
+
+  --sombra-roja:    0 0 20px rgba(139,0,0,0.6);
+  --sombra-sangre:  0 0 40px rgba(139,0,0,0.4), 0 0 80px rgba(74,0,0,0.3);
+  --borde-pixel:    3px solid var(--rojo-sangre);
+}
+
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--negro);
+  color: var(--crema);
+  font-family: var(--fuente-retro);
+  font-size: 20px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--negro); }
+::-webkit-scrollbar-thumb { background: var(--rojo-sangre); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--rojo-vivo); }
+
+/* ── Selección ── */
+::selection { background: var(--rojo-sangre); color: var(--crema); }
+
+/* ── Títulos globales ── */
+h1, h2, h3 {
+  font-family: var(--fuente-pixel);
+  color: var(--rojo-vivo);
+  text-shadow: var(--sombra-roja);
+  line-height: 1.4;
+}
+
+a { color: var(--rojo-vivo); text-decoration: none; }
+
+/* ── Efecto de parpadeo ── */
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ── Goteo de sangre ── */
+@keyframes goteo {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  70%  { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+
+/* ── Fade in desde abajo ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Glitch ── */
+@keyframes glitch1 {
+  0%, 100% { clip-path: inset(0 0 95% 0); transform: translate(-3px, 0); }
+  20%       { clip-path: inset(30% 0 50% 0); transform: translate(3px, 0); }
+  40%       { clip-path: inset(60% 0 20% 0); transform: translate(-3px, 0); }
+  60%       { clip-path: inset(80% 0 5%  0); transform: translate(3px, 0); }
+  80%       { clip-path: inset(10% 0 70% 0); transform: translate(-3px, 0); }
+}
+@keyframes glitch2 {
+  0%, 100% { clip-path: inset(50% 0 30% 0); transform: translate(3px, 0); color: var(--rojo-vivo); }
+  25%       { clip-path: inset(20% 0 65% 0); transform: translate(-3px, 0); }
+  75%       { clip-path: inset(75% 0 10% 0); transform: translate(3px, 0); color: var(--dorado); }
+}
+
+/* ── Pulso rojo ── */
+@keyframes pulsoRojo {
+  0%, 100% { box-shadow: 0 0 10px rgba(139,0,0,0.4); }
+  50%       { box-shadow: 0 0 30px rgba(200,0,0,0.8), 0 0 60px rgba(139,0,0,0.4); }
+}
+
+/* ── Flotación ── */
+@keyframes flotar {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ── Ruido/estática (efecto CRT) ── */
+@keyframes noise {
+  0%   { background-position: 0 0; }
+  100% { background-position: 100% 100%; }
+}
+
+/* ── Clases de utilidad ── */
+
+
+
+.animate-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.animate-up.visible {
+  opacity: 1;
+  transform: none;
+}
